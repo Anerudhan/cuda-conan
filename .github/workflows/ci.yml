@@ -63,9 +63,11 @@ jobs:
       - name: conan create cuda-toolkit
         run: conan create recipes/cuda-toolkit/${{ matrix.cuda-version }} && conan cache clean "*"
 
+      # test_package is skipped here: it is only built when a host compiler able to
+      # target ${{ matrix.cross-arch }} is available, in the dedicated step below
       - name: conan create cuda-toolkit (cross-building for ${{ matrix.cross-arch }})
         if: matrix.cross-arch != ''
-        run: conan create recipes/cuda-toolkit/${{ matrix.cuda-version }} -s arch=${{ matrix.cross-arch }} && conan cache clean "*"
+        run: conan create recipes/cuda-toolkit/${{ matrix.cuda-version }} -s arch=${{ matrix.cross-arch }} --test-folder="" && conan cache clean "*"
 
       - name: conan test cuda-toolkit (cross-building for ${{ matrix.cross-arch }})
         if: matrix.cross-test-ref != ''

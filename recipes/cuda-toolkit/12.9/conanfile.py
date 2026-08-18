@@ -36,7 +36,7 @@ class CudaToolkitConan(ConanFile):
         cuda_distrib = json.loads(json_content)
 
         if self.settings.os == "Linux" and self.settings.arch == "armv8":
-            cuda_platform = "linux-aarch64"
+            cuda_platform = "linux-sbsa"
         else:
             cuda_platform = f"{str(self.settings.os).lower()}-{self.settings.arch}"
 
@@ -66,7 +66,7 @@ class CudaToolkitConan(ConanFile):
 
         platform_components = {
             "linux-x86_64": ["libcufile", "cuda_sandbox_dev", "cuda_opencl"],
-            "linux-aarch64": ["libcufile", "cuda_compat", "libcudla",],
+            "linux-sbsa": ["libcufile"],
             "windows-x86_64": ["cuda_opencl", "visual_studio_integration"],
         }
         components += platform_components.get(cuda_platform, [])
@@ -96,7 +96,7 @@ class CudaToolkitConan(ConanFile):
             copy(self, "*", src=os.path.join(self.build_folder, "cuda", folder), dst=os.path.join(self.package_folder, folder))
 
         if self.settings.os == "Linux":
-            arch = "aarch64" if self.settings.arch == "armv8" else str(self.settings.arch)
+            arch = "sbsa" if self.settings.arch == "armv8" else str(self.settings.arch)
             targets_folder = f"targets/{arch}-linux"
             copy(self, "*", src=os.path.join(self.build_folder, "cuda", "lib"), dst=os.path.join(self.package_folder, targets_folder, "lib"))
             copy(self, "*", src=os.path.join(self.build_folder, "cuda", "include"), dst=os.path.join(self.package_folder, targets_folder, "include"))
@@ -132,7 +132,7 @@ class CudaToolkitConan(ConanFile):
         self.buildenv_info.define_path("CUDACXX", os.path.join(self.package_folder, "bin", nvcc))
 
         if not self.settings_target:
-            arch = "aarch64" if self.settings.arch == "armv8" else str(self.settings.arch)
+            arch = "sbsa" if self.settings.arch == "armv8" else str(self.settings.arch)
             self.buildenv_info.define_path("CUDAToolkit_ROOT", self.package_folder)
             self.buildenv_info.define_path("CONAN_CUDA_TARGET_DIR", os.path.join(self.package_folder, "targets", f"{arch}-linux"))
 
