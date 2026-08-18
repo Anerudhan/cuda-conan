@@ -4,7 +4,7 @@ from pathlib import Path
 
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
-from conan.tools.files import copy, download, get, load, rename
+from conan.tools.files import copy, download, get, load, rename, replace_in_file
 
 class CudaToolkitConan(ConanFile):
     name = "cuda-toolkit"
@@ -30,8 +30,11 @@ class CudaToolkitConan(ConanFile):
         json_content = load(self, distrib)
         cuda_distrib = json.loads(json_content)
 
-        arch = "x86_64"
-        cuda_platform = f"{str(self.settings.os).lower()}-{arch}"
+        if self.settings.os == "Linux" and self.settings.arch == "armv8":
+            cuda_platform = "linux-aarch64"
+        else:
+            cuda_platform = f"{str(self.settings.os).lower()}-{self.settings.arch}"
+
         self.output.info(f"About to download CUDA toolkit components for {cuda_platform}")
 
         components = [
@@ -75,14 +78,20 @@ class CudaToolkitConan(ConanFile):
             get(self, url, sha256=checksum, destination="cuda", strip_root=True, keep_permissions=False)
             rename(self, f"{self.build_folder}/cuda/LICENSE", f"LICENSE_{component_name}")
 
+        if self.settings.os == "Linux":
+            # When crossbuilding, point nvcc to the target directory in the "host" package (for the target architecture),
+            # rather than have it look relative to itself (which is the current architecture of the build machine)
+            replace_in_file(self, "cuda/bin/nvcc.profile", '$(TOP)/$(_TARGET_DIR_)/', '$(CONAN_CUDA_TARGET_DIR)/')
+            replace_in_file(self, "cuda/bin/nvcc.profile", "lib$(_TARGET_SIZE_)", "lib" )
+
     def package(self):
         copy(self, "LICENSE*", src=self.build_folder, dst=os.path.join(self.package_folder, "licenses"))
 
         for folder in ["bin", "nvml", "nvvm", "compat"]:
             copy(self, "*", src=os.path.join(self.build_folder, "cuda", folder), dst=os.path.join(self.package_folder, folder))
 
-        if self.settings.os == "Linux" and not self.settings_target:
-            arch = "x86_64"
+        if self.settings.os == "Linux":
+            arch = "aarch64" if self.settings.arch == "armv8" else str(self.settings.arch)
             targets_folder = f"targets/{arch}-linux"
             copy(self, "*", src=os.path.join(self.build_folder, "cuda", "lib"), dst=os.path.join(self.package_folder, targets_folder, "lib"))
             copy(self, "*", src=os.path.join(self.build_folder, "cuda", "include"), dst=os.path.join(self.package_folder, targets_folder, "include"))
@@ -118,7 +127,9 @@ class CudaToolkitConan(ConanFile):
         self.buildenv_info.define_path("CUDACXX", os.path.join(self.package_folder, "bin", nvcc))
 
         if not self.settings_target:
+            arch = "aarch64" if self.settings.arch == "armv8" else str(self.settings.arch)
             self.buildenv_info.define_path("CUDAToolkit_ROOT", self.package_folder)
+            self.buildenv_info.define_path("CONAN_CUDA_TARGET_DIR", os.path.join(self.package_folder, "targets", f"{arch}-linux"))
 
         if self.settings.os == "Linux":
             self.cpp_info.libdirs = ["lib64"]
