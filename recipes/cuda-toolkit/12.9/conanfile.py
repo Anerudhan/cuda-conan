@@ -15,17 +15,38 @@ class CudaToolkitConan(ConanFile):
     homepage = "https://developer.nvidia.com/cuda-toolkit"
     description = "A development environment for creating high performance GPU-accelerated applications"
     settings = "os", "arch", "compiler", "build_type"
+    options = {
+        # Linux armv8 only: SBSA (Arm servers) vs Jetson/Tegra (linux-aarch64)
+        "arm_target": ["sbsa", "jetson"],
+    }
+    default_options = {
+        "arm_target": "sbsa",
+    }
+
+    def config_options(self):
+        if self.settings.os != "Linux" or self.settings.arch != "armv8":
+            del self.options.arm_target
 
     def validate(self):
         if self.settings.os not in ["Windows", "Linux"]:
             raise ConanInvalidConfiguration("Operating system not supported")
 
-        # CUDA 12.9 redistributables exist for linux-x86_64, linux-aarch64 and windows-x86_64 only
+        # CUDA 12.9 redistributables: linux-x86_64, linux-sbsa, linux-aarch64, windows-x86_64
         supported_archs = ["x86_64", "armv8"] if self.settings.os == "Linux" else ["x86_64"]
         if self.settings.arch not in supported_archs:
             raise ConanInvalidConfiguration(f"{self.settings.arch} is not supported on {self.settings.os}")
 
         # TODO: Add checks for supported compilers as per https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#id56
+
+    def _cuda_platform(self):
+        if self.settings.os == "Linux" and self.settings.arch == "armv8":
+            return "linux-aarch64" if self.options.arm_target == "jetson" else "linux-sbsa"
+        return f"{str(self.settings.os).lower()}-{self.settings.arch}"
+
+    def _targets_arch(self):
+        if self.settings.os == "Linux" and self.settings.arch == "armv8":
+            return "aarch64" if self.options.arm_target == "jetson" else "sbsa"
+        return str(self.settings.arch)
 
     def build(self):
         base_url = "https://developer.download.nvidia.com/compute/cuda/redist"
@@ -35,11 +56,7 @@ class CudaToolkitConan(ConanFile):
         json_content = load(self, distrib)
         cuda_distrib = json.loads(json_content)
 
-        if self.settings.os == "Linux" and self.settings.arch == "armv8":
-            cuda_platform = "linux-sbsa"
-        else:
-            cuda_platform = f"{str(self.settings.os).lower()}-{self.settings.arch}"
-
+        cuda_platform = self._cuda_platform()
         self.output.info(f"About to download CUDA toolkit components for {cuda_platform}")
 
         components = [
@@ -67,6 +84,7 @@ class CudaToolkitConan(ConanFile):
         platform_components = {
             "linux-x86_64": ["libcufile", "cuda_sandbox_dev", "cuda_opencl"],
             "linux-sbsa": ["libcufile"],
+            "linux-aarch64": ["libcufile", "cuda_compat", "libcudla"],
             "windows-x86_64": ["cuda_opencl", "visual_studio_integration"],
         }
         components += platform_components.get(cuda_platform, [])
@@ -96,7 +114,7 @@ class CudaToolkitConan(ConanFile):
             copy(self, "*", src=os.path.join(self.build_folder, "cuda", folder), dst=os.path.join(self.package_folder, folder))
 
         if self.settings.os == "Linux":
-            arch = "sbsa" if self.settings.arch == "armv8" else str(self.settings.arch)
+            arch = self._targets_arch()
             targets_folder = f"targets/{arch}-linux"
             copy(self, "*", src=os.path.join(self.build_folder, "cuda", "lib"), dst=os.path.join(self.package_folder, targets_folder, "lib"))
             copy(self, "*", src=os.path.join(self.build_folder, "cuda", "include"), dst=os.path.join(self.package_folder, targets_folder, "include"))
@@ -119,7 +137,7 @@ class CudaToolkitConan(ConanFile):
                             dst=os.path.join(self.package_folder, "extras", "visual_studio_integration") )
 
     def package_id(self):
-        # only os and arch matter for this package
+        # only os, arch, and arm_target (when set) matter for this package
         self.info.settings.rm_safe("compiler")
         self.info.settings.rm_safe("build_type")
 
@@ -132,9 +150,10 @@ class CudaToolkitConan(ConanFile):
         self.buildenv_info.define_path("CUDACXX", os.path.join(self.package_folder, "bin", nvcc))
 
         if not self.settings_target:
-            arch = "sbsa" if self.settings.arch == "armv8" else str(self.settings.arch)
+            arch = self._targets_arch() if self.settings.os == "Linux" else str(self.settings.arch)
             self.buildenv_info.define_path("CUDAToolkit_ROOT", self.package_folder)
-            self.buildenv_info.define_path("CONAN_CUDA_TARGET_DIR", os.path.join(self.package_folder, "targets", f"{arch}-linux"))
+            if self.settings.os == "Linux":
+                self.buildenv_info.define_path("CONAN_CUDA_TARGET_DIR", os.path.join(self.package_folder, "targets", f"{arch}-linux"))
 
         if self.settings.os == "Linux":
             self.cpp_info.libdirs = ["lib64"]
