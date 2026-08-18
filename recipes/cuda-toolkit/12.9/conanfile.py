@@ -19,7 +19,12 @@ class CudaToolkitConan(ConanFile):
     def validate(self):
         if self.settings.os not in ["Windows", "Linux"]:
             raise ConanInvalidConfiguration("Operating system not supported")
-        
+
+        # CUDA 12.9 redistributables exist for linux-x86_64, linux-aarch64 and windows-x86_64 only
+        supported_archs = ["x86_64", "armv8"] if self.settings.os == "Linux" else ["x86_64"]
+        if self.settings.arch not in supported_archs:
+            raise ConanInvalidConfiguration(f"{self.settings.arch} is not supported on {self.settings.os}")
+
         # TODO: Add checks for supported compilers as per https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#id56
 
     def build(self):

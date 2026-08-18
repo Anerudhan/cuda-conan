@@ -14,6 +14,7 @@ jobs:
         include:
           - os: ubuntu-latest
             cuda-version: "12.9"
+            cross-arch: "armv8" # test x86_64 -> arm64 cross-building, in addition to native
           - os: ubuntu-latest
             cuda-version: "13.0"
           - os: ubuntu-latest
@@ -28,7 +29,6 @@ jobs:
           # cuda <13.2 requires Visual Studio 2022, available on windows-2022 runner
           - os: windows-2022
             cuda-version: "12.9"
-            cross-arch: "armv8" # test x86_64 -> arm64 cross-building, in addition to native
           - os: windows-2022
             cuda-version: "13.0"
           # cuda >=13.2 can run on windows-latest (Visual Studio 2026)
@@ -40,6 +40,8 @@ jobs:
           - os: windows-11-arm
             cuda-version: "13.4"
             cross-arch: "x86_64" # test arm64 -> x86_64 cross-building, in addition to native
+            # msvc can target both architectures, so the crossbuilt package can also be tested here
+            cross-test-ref: "cuda-toolkit/13.4.0-preview"
 
     runs-on: ${{ matrix.os }}
 
@@ -66,8 +68,8 @@ jobs:
         run: conan create recipes/cuda-toolkit/${{ matrix.cuda-version }} -s arch=${{ matrix.cross-arch }} && conan cache clean "*"
 
       - name: conan test cuda-toolkit (cross-building for ${{ matrix.cross-arch }})
-        if: matrix.cross-arch != ''
-        run: conan test recipes/cuda-toolkit/${{ matrix.cuda-version }}/test_package cuda-toolkit/13.4.0-preview -s arch=${{ matrix.cross-arch }} -c tools.cmake.cmaketoolchain:generator=Ninja
+        if: matrix.cross-test-ref != ''
+        run: conan test recipes/cuda-toolkit/${{ matrix.cuda-version }}/test_package ${{ matrix.cross-test-ref }} -s arch=${{ matrix.cross-arch }} -c tools.cmake.cmaketoolchain:generator=Ninja
 
       - name: build cuda-samples
         if: (matrix.cuda-version == '13.2' || (matrix.cuda-version == '13.4' && startsWith(matrix.os, 'windows')))
