@@ -18,16 +18,17 @@ jobs:
             cuda-version: "13.0"
           - os: ubuntu-latest
             cuda-version: "13.2"
-          - os: ubuntu-24.04-arm
-            cuda-version: "13.2"
           - os: ubuntu-latest
             cuda-version: "13.3"
+          - os: ubuntu-24.04-arm
+            cuda-version: "13.2"
           - os: ubuntu-24.04-arm
             cuda-version: "13.3"
           # Windows:
           # cuda <13.2 requires Visual Studio 2022, available on windows-2022 runner
           - os: windows-2022
             cuda-version: "12.9"
+            cross-arch: "armv8" # test x86_64 -> arm64 cross-building, in addition to native
           - os: windows-2022
             cuda-version: "13.0"
           # cuda >=13.2 can run on windows-latest (Visual Studio 2026)
@@ -36,9 +37,6 @@ jobs:
           - os: windows-latest
             cuda-version: "13.3"
           # 13.4.0-preview developer preview: Windows x86_64 and arm64
-          - os: windows-latest
-            cuda-version: "13.4"
-            cross-arch: "armv8" # test x86_64 -> arm64 cross-building, in addition to native
           - os: windows-11-arm
             cuda-version: "13.4"
             cross-arch: "x86_64" # test arm64 -> x86_64 cross-building, in addition to native
