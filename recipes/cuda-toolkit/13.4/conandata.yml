@@ -221,7 +221,7 @@ sources:
           sha256: cf3f9c63c02305e728f4571121a02b71291119e43e611309899773d412e312c4
         libcublas-dev-13-4:
           url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcublas-dev-13-4_13.7.0.10-1_arm64.deb
-          sha256: 6860aa80a3e9f0b4e12f523b45b48feb67c107780ba322b52c91a5feb56cdb64
+          sha256: 61b4e5edc2b406fea4866f01fb6e572cca732e2655ea89339cb0290a1fc6e977
         libcufft-13-4:
           url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcufft-13-4_12.4.0.16-1_arm64.deb
           sha256: ba88d1caafb1dd08331ef2c6ca87808bfebb88a498d4345a1c3399111b0acd75
@@ -251,7 +251,7 @@ sources:
           sha256: 0fdb6d2fb113669388987a2d3257254d6436720ccf4fecef373f56579d5e6738
         libcusolver-dev-13-4:
           url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusolver-dev-13-4_12.3.1.12-1_arm64.deb
-          sha256: 87cc07cf5db98621c593d4f6157386a1f6e7559ce9161c8fd2153fb572fc9761
+          sha256: e8455034d51fda9b8bf681b88c8fdf230ce637d3e59d811856c73d1967f7ec19
         libcusparse-13-4:
           url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusparse-13-4_12.8.6.46-1_arm64.deb
           sha256: 896d9427aaeec5ce456611b503f4993ce38b16659c539b4b7c2d02d25de2a7f0

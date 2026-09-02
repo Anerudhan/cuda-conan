@@ -99,20 +99,51 @@ def scrape_listing(deb_arch):
 
 def sha256_of(url):
     digest = hashlib.sha256()
+    read = 0
     with urllib.request.urlopen(url) as response:
+        declared = int(response.headers["Content-Length"])
         for chunk in iter(lambda: response.read(1024 * 1024), b""):
             digest.update(chunk)
+            read += len(chunk)
+
+    # A stream that ends early still produces a perfectly plausible checksum, which would
+    # then be baked into conandata.yml and only surface as a hash mismatch on CI
+    if read != declared:
+        raise SystemExit(f"{url}: read {read} of {declared} bytes")
+
     return digest.hexdigest()
+
+
+def verify(linux, only_arch):
+    mismatches = 0
+    for arch, packages in linux.items():
+        if only_arch and arch != only_arch:
+            continue
+        for name, data in packages.items():
+            actual = sha256_of(data["url"])
+            if actual == data["sha256"]:
+                print(f"ok       {arch}/{name}")
+            else:
+                mismatches += 1
+                print(f"MISMATCH {arch}/{name}\n  recorded {data['sha256']}\n  actual   {actual}")
+
+    print(f"\n{mismatches} mismatch(es)")
+    return 1 if mismatches else 0
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--hash", action="store_true", help="download each package to compute its sha256")
+    parser.add_argument("--verify", action="store_true", help="re-hash every package and report mismatches")
+    parser.add_argument("--arch", choices=sorted(DEB_ARCH), help="restrict --verify to a single architecture")
     args = parser.parse_args()
 
     conandata_path = Path(__file__).parent / "conandata.yml"
     conandata = yaml.safe_load(conandata_path.read_text())
     previous = conandata["sources"][VERSION].get("Linux", {})
+
+    if args.verify:
+        raise SystemExit(verify(previous, args.arch))
 
     linux = {}
     for arch, deb_arch in DEB_ARCH.items():
