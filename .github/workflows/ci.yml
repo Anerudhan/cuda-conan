@@ -24,6 +24,11 @@ jobs:
             cuda-version: "13.3"
           - os: ubuntu-24.04-arm
             cuda-version: "13.3"
+          # 13.4.0-preview developer preview: Linux x86_64 and arm-sbsa
+          - os: ubuntu-latest
+            cuda-version: "13.4"
+          - os: ubuntu-24.04-arm
+            cuda-version: "13.4"
           # Windows:
           # cuda <13.2 requires Visual Studio 2022, available on windows-2022 runner
           - os: windows-2022

@@ -1,11 +1,296 @@
 sources:
-  "13.4.0-preview":
+  13.4.0-preview:
     Windows:
       x86_64:
-        url: "https://packages.nvidia.com/prerelease/cuda/13.4.0/local_installers/cuda_13.4.0_windows_x86_64.exe"
-        sha256: "b743a3323116bf33404953ef58a9b9a3319368241f6352e933e9461409e9a759"
-        md5: "68026c390d4ab3802ea3eb37d7054649"
+        url: https://packages.nvidia.com/prerelease/cuda/13.4.0/local_installers/cuda_13.4.0_windows_x86_64.exe
+        sha256: b743a3323116bf33404953ef58a9b9a3319368241f6352e933e9461409e9a759
+        md5: 68026c390d4ab3802ea3eb37d7054649
       armv8:
-        url: "https://packages.nvidia.com/prerelease/cuda/13.4.0/local_installers/cuda_13.4.0_windows_arm64.exe"
-        sha256: "a1f68c81160b16d519c4087788b9c07de41306c3f1b872471ceee0996621374d"
-        md5: "bff92fe87ba1da3656ee0fd22615eadb"
+        url: https://packages.nvidia.com/prerelease/cuda/13.4.0/local_installers/cuda_13.4.0_windows_arm64.exe
+        sha256: a1f68c81160b16d519c4087788b9c07de41306c3f1b872471ceee0996621374d
+        md5: bff92fe87ba1da3656ee0fd22615eadb
+    Linux:
+      x86_64:
+        cccl-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cccl-13-4_13.3.4.1.2-1_amd64.deb
+          sha256: 7e4802b9cce26cf27f4dd15d4466d0031b76c0c1c225f6eb8c433ea45f512692
+        cuda-crt-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-crt-13-4_13.4.46-1_amd64.deb
+          sha256: cb4647eb83e64330e0c278cfeeda4c6f5e933a7529b75a2b47f8e2c13b52c336
+        cuda-cudart-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cudart-13-4_13.4.46-1_amd64.deb
+          sha256: 0728f788268b98b00e5ce597d9094537e939c9077855710859178c9ac5715d29
+        cuda-cudart-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cudart-dev-13-4_13.4.46-1_amd64.deb
+          sha256: 922bf6b95c0bfd0b89c4ca5c8f1b50d5c92a603a4edd38af4ba62c598173f711
+        cuda-culibos-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-culibos-dev-13-4_13.4.46-1_amd64.deb
+          sha256: e6f401674f5992aa0fdb92cfc90ff31fbce8a1fbd86dc2b4c488e26e1fddd6ca
+        cuda-cuobjdump-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cuobjdump-13-4_13.4.46-1_amd64.deb
+          sha256: fe06838101c8ccc0df52bddbec579882e575b4711f9c38fcd25d49db68cee9ad
+        cuda-cupti-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cupti-13-4_13.4.46-1_amd64.deb
+          sha256: 827a879533b7306d2d0994e63f733829075fb3a066ced769bba4f541809ac606
+        cuda-cupti-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cupti-dev-13-4_13.4.46-1_amd64.deb
+          sha256: 0d9c788d0a99c543fab82eb5ad20ea39647a5ddc881fa39dedb559baddcd7303
+        cuda-cuxxfilt-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cuxxfilt-13-4_13.4.46-1_amd64.deb
+          sha256: 3a1464de4ea196d56bda07b5b5ff963cc81c18279fa7361cb5892879575f18aa
+        cuda-driver-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-driver-dev-13-4_13.4.46-1_amd64.deb
+          sha256: a9b8297ad3bd472627e52d0ab91f42d3f4f617416cd59ced79de5814d4e83ed0
+        cuda-nvcc-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvcc-13-4_13.4.46-1_amd64.deb
+          sha256: 4664ae5f28e4eaebf8fea98eca879299a71ee9e54943a5c5a30774f18b69b44e
+        cuda-nvdisasm-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvdisasm-13-4_13.4.46-1_amd64.deb
+          sha256: 8abc1fd0e2936e8d62755d364e6e00f8fff8624c55bc943e6fe63fb06aa27a85
+        cuda-nvml-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvml-dev-13-4_13.4.46-1_amd64.deb
+          sha256: eed925b9f1d48830dd10ba96b02f25ef7db29f32aa680eba9577a97146f5b644
+        cuda-nvprune-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvprune-13-4_13.4.46-1_amd64.deb
+          sha256: d83d6c45469f30a6388a45c0b56aa1372228c022722841df344621e61f465518
+        cuda-nvrtc-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvrtc-13-4_13.4.46-1_amd64.deb
+          sha256: 9d747df9bb88ae780cb7cf4b906e84637aa193414046e91ff63570b8dfdf31e7
+        cuda-nvrtc-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvrtc-dev-13-4_13.4.46-1_amd64.deb
+          sha256: e96e2f9f04660457a199d989e41cd0b616d031c4c99c2a82045326f6ba27e766
+        cuda-nvtx-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvtx-13-4_13.4.46-1_amd64.deb
+          sha256: 78a5375ef122467de38b01a4af5ad0ef02f0f3296fda92457c8861d594834aed
+        cuda-profiler-api-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-profiler-api-13-4_13.4.46-1_amd64.deb
+          sha256: 0d2b75b27893b7a69658cb2b53597d5160876aaecedbee3d5e32a41f85bcb419
+        cuda-sandbox-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-sandbox-dev-13-4_13.4.46-1_amd64.deb
+          sha256: 1f81ef83114d763efc5d8674b87628455592e0d08b35a80b2cf4e4aed4d18c71
+        cuda-sanitizer-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-sanitizer-13-4_13.4.46-1_amd64.deb
+          sha256: db9d3e15d080fe55e12ba7807633b6e327260f3b170c6108cdd7618186fbe901
+        cuda-tileiras-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-tileiras-13-4_13.4.46-1_amd64.deb
+          sha256: ed58daa7628ec6c571ba534c3ea2430b793ffdb1fffd56936f17ee85c2f3d19f
+        libcublas-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcublas-13-4_13.7.0.10-1_amd64.deb
+          sha256: 07b2f64f942779ace26f731b6dbb2b0541418765b30931d61ade5a2626b2a7c9
+        libcublas-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcublas-dev-13-4_13.7.0.10-1_amd64.deb
+          sha256: bf16a617ecb8f275e9af888923ead5e8258836e285a618d5d00277500b8b8e21
+        libcufft-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcufft-13-4_12.4.0.16-1_amd64.deb
+          sha256: 45435fbb02df6f59743f0f30b6527b80d0b9212d03395de1105f77aad0bc3269
+        libcufft-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcufft-dev-13-4_12.4.0.16-1_amd64.deb
+          sha256: 6fd59b3dd1419d931dc18e1dd13ba2d3d776e7808fcba7728952ccb2dfb3a4af
+        libcufile-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcufile-13-4_1.19.0.108-1_amd64.deb
+          sha256: 3e83fe091f1595adaeef42b6256206da3cb5f542413253cb5db7f1386d8bd7c2
+        libcufile-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcufile-dev-13-4_1.19.0.108-1_amd64.deb
+          sha256: 5eaa7a0cd299741a9f978331650272c6d7bc0cd61b7791ae41683cb6423b7095
+        libcuobjclient-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcuobjclient-13-4_1.3.0.108-1_amd64.deb
+          sha256: 09753947588de1949937b08944e93ec9a01b5d3515eb37d98558c02058603cef
+        libcuobjclient-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcuobjclient-dev-13-4_1.3.0.108-1_amd64.deb
+          sha256: 8f66575e3787b0c20b4059239c407146c923c5de4289d91ad27077cf3ca26bd3
+        libcurand-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcurand-13-4_10.4.4.46-1_amd64.deb
+          sha256: 10384c1adffce81b49a1a082ff08240d7f9534476cb610b45d4cc3e5f3c3e824
+        libcurand-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcurand-dev-13-4_10.4.4.46-1_amd64.deb
+          sha256: d94f3762ea2c6eae97d55eecfa561dce9c38aebdf467897cf546c92a839f2c43
+        libcusolver-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusolver-13-4_12.3.1.12-1_amd64.deb
+          sha256: f419e3c77b5f2a53e33be82ea2648a1ebd033757ccc5f0dd14795d03261f2268
+        libcusolver-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusolver-dev-13-4_12.3.1.12-1_amd64.deb
+          sha256: 59aa595f49197f66d99a76953d576f042f7af5f15aac2986795e2489f2cf997b
+        libcusparse-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusparse-13-4_12.8.6.46-1_amd64.deb
+          sha256: 0d9d0086f792c93bb7b03b9a18ff25af965c4a9c350bd19e4e60a78c19cdb4ab
+        libcusparse-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusparse-dev-13-4_12.8.6.46-1_amd64.deb
+          sha256: 9083845b5f371b80a69916a1b4652073f9082b676e507bf931950d9cf952dcd1
+        libnpp-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnpp-13-4_13.2.0.32-1_amd64.deb
+          sha256: fedd67ecd025aa681ba33d1a5a2e36ac477205fa0d0f5bdf7f833634021caec4
+        libnpp-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnpp-dev-13-4_13.2.0.32-1_amd64.deb
+          sha256: e2195470341b3920996930d0619081e08a031d49b4d67aa6c6eaa5fd99476a3a
+        libnvfatbin-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvfatbin-13-4_13.4.46-1_amd64.deb
+          sha256: c10fe27e5923d5684a8f121de3bfc4138b6843e303d1f307c6d457fa8e18fae2
+        libnvfatbin-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvfatbin-dev-13-4_13.4.46-1_amd64.deb
+          sha256: 42db73fa4e47aca67eea8c6e560ea3147cdc609a2b9a20341ac0d5ab90fb950d
+        libnvjitlink-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvjitlink-13-4_13.4.46-1_amd64.deb
+          sha256: 2ce3f093353729ba9946bc13237b64508cebbd3abe9ee6f5d48fbbf58c4a1c2b
+        libnvjitlink-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvjitlink-dev-13-4_13.4.46-1_amd64.deb
+          sha256: 2264b9f35942d910c44da0720b59261e9dea4f55b66506d200ace5d01f9f7984
+        libnvjpeg-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvjpeg-13-4_13.2.2.32-1_amd64.deb
+          sha256: 2ffae640414c570f1cd578401d21cd9923f5d7c85b6b20e9b6528d55a19016ab
+        libnvjpeg-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvjpeg-dev-13-4_13.2.2.32-1_amd64.deb
+          sha256: 8e28f9f1a0f2983fd6da07b09ba3dd2e62901fbe77d0ed25e6cfaf1fb048568d
+        libnvptxcompiler-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvptxcompiler-13-4_13.4.46-1_amd64.deb
+          sha256: db485cdc6e8eeaff1c83d3d5845357dde878623b4a65d7bd2f1957ba99b800c4
+        libnvvm-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvvm-13-4_13.4.46-1_amd64.deb
+          sha256: 9ad946c4f5645baa6b8853ad5bb409967fd437724ce5ed5d8e707c83fba96281
+        cuda-opencl-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-opencl-13-4_13.4.46-1_amd64.deb
+          sha256: 08d16a417afe9550e34e8e369f059aef5cc5f1631f220a75778bf694ffa02e78
+        cuda-opencl-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/amd64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-opencl-dev-13-4_13.4.46-1_amd64.deb
+          sha256: d16288593e9995071a8b6edc244ce8728bee93321bd02a1990cccb4ba7d0b6ff
+      armv8:
+        cccl-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cccl-13-4_13.3.4.1.2-1_arm64.deb
+          sha256: 6fd8aec3bb6915343e3cf29902fde3fe6d15d70541720a317a2bb800c5515e7d
+        cuda-crt-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-crt-13-4_13.4.46-1_arm64.deb
+          sha256: b5ad5f21290019bdbf84f31bd0146ae20996e799f08e2de185f9a7bee6450376
+        cuda-cudart-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cudart-13-4_13.4.46-1_arm64.deb
+          sha256: 0e5834e03cf453aeaab9ae34a7d31733a15f694c1d2cd8cb1b70e048f3e169e8
+        cuda-cudart-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cudart-dev-13-4_13.4.46-1_arm64.deb
+          sha256: 52de79f90acd857f3dc9990b32d32f537f220320d0ab24a62793c69d6e50f4f2
+        cuda-culibos-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-culibos-dev-13-4_13.4.46-1_arm64.deb
+          sha256: 693b557b36a4bf9f324bf253082caada4df7a3d5bfcad5bacedf1cfe78db8cce
+        cuda-cuobjdump-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cuobjdump-13-4_13.4.46-1_arm64.deb
+          sha256: 9cc9f4559f5a138e294fe356bba342d8bf6ae6b75ec00465b30d0fe2c6cae8aa
+        cuda-cupti-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cupti-13-4_13.4.46-1_arm64.deb
+          sha256: 15ca9072b193717d1d0e629d6755bb170ff641c3b264575289030dcc04a5ce71
+        cuda-cupti-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cupti-dev-13-4_13.4.46-1_arm64.deb
+          sha256: c570bce1bf40b10829c00cff09c10a7ebb3513f830a83f960be272d842833c4f
+        cuda-cuxxfilt-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-cuxxfilt-13-4_13.4.46-1_arm64.deb
+          sha256: 79baef35a69c54e7dc9e2d66d048668bad65f1063d400a30a56363897efb0fc3
+        cuda-driver-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-driver-dev-13-4_13.4.46-1_arm64.deb
+          sha256: 19fb0d2ecb40c98a39256f1b07e76543599b2d79a0cac0b975936ff06734c493
+        cuda-nvcc-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvcc-13-4_13.4.46-1_arm64.deb
+          sha256: 88cfe8bee7b12d380a05286545462be1de9c6f303ee9bef2a045b3f06ad2fe4e
+        cuda-nvdisasm-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvdisasm-13-4_13.4.46-1_arm64.deb
+          sha256: f2e88a8930273b65efd5fd87b49482951e5424517e9eb300572155d1e53e4847
+        cuda-nvml-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvml-dev-13-4_13.4.46-1_arm64.deb
+          sha256: 8115c8d749f1e89ab22eb705970b6b2ade1115e2fa374e72dffc2752f6ea1eff
+        cuda-nvprune-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvprune-13-4_13.4.46-1_arm64.deb
+          sha256: 6e6bc519861ea69a2b3647f0c8d65e0e6b97872d6a11634beeff0bac90d426f0
+        cuda-nvrtc-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvrtc-13-4_13.4.46-1_arm64.deb
+          sha256: 80b3d7549db2fe7c1a63411e2e9e21a281926fedb676375e0265250b77ed8075
+        cuda-nvrtc-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvrtc-dev-13-4_13.4.46-1_arm64.deb
+          sha256: e8d8bb19b7f706da65c7372728a34b6bcdc7ddd24e495f2ba95e4c1afd606e4e
+        cuda-nvtx-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-nvtx-13-4_13.4.46-1_arm64.deb
+          sha256: bc07d9f997b55ab61bbcab2a5681ec0cc0628cd635a4e951cd7d2565c9a22d11
+        cuda-profiler-api-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-profiler-api-13-4_13.4.46-1_arm64.deb
+          sha256: ce289b808f74d98f75d78160413f0250cb03d34ed847c809d006cb5fdee38896
+        cuda-sandbox-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-sandbox-dev-13-4_13.4.46-1_arm64.deb
+          sha256: b0becdb0f5fc4b202c223ced31cb541d05b60a3c7cfe22e12fc0d75d2113c0f9
+        cuda-sanitizer-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-sanitizer-13-4_13.4.46-1_arm64.deb
+          sha256: fe0bc1b597869ff4f35c5d36ca52625ae617b93d3a0ffcb4b7690cde2d000a18
+        cuda-tileiras-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/cuda-tileiras-13-4_13.4.46-1_arm64.deb
+          sha256: bca7141ef68b94cf70a411f56b97dd8e17aebd5f5be6930a074676a835443707
+        libcublas-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcublas-13-4_13.7.0.10-1_arm64.deb
+          sha256: cf3f9c63c02305e728f4571121a02b71291119e43e611309899773d412e312c4
+        libcublas-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcublas-dev-13-4_13.7.0.10-1_arm64.deb
+          sha256: 6860aa80a3e9f0b4e12f523b45b48feb67c107780ba322b52c91a5feb56cdb64
+        libcufft-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcufft-13-4_12.4.0.16-1_arm64.deb
+          sha256: ba88d1caafb1dd08331ef2c6ca87808bfebb88a498d4345a1c3399111b0acd75
+        libcufft-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcufft-dev-13-4_12.4.0.16-1_arm64.deb
+          sha256: f5e4571195f0017e2d27823aef5f076fded62d44920f88793788ba1b6540affa
+        libcufile-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcufile-13-4_1.19.0.108-1_arm64.deb
+          sha256: 28b353d597465cf8a4b082f84688864937dd41afb06a89bcbc295ee0b3cbd920
+        libcufile-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcufile-dev-13-4_1.19.0.108-1_arm64.deb
+          sha256: 7f63272f2bc794b248c76d2cf4c18ab9e43e496a8529ceafdd51eafe99d628fb
+        libcuobjclient-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcuobjclient-13-4_1.3.0.108-1_arm64.deb
+          sha256: e8331bf5cd0aef98c2de3de22e1900a7df343b365c767f300acdf7d71071dedb
+        libcuobjclient-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcuobjclient-dev-13-4_1.3.0.108-1_arm64.deb
+          sha256: a2b6264a58fe0a53a1fa28d8da4b07dfbd780eb407e5983858c46fd5b22a01d7
+        libcurand-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcurand-13-4_10.4.4.46-1_arm64.deb
+          sha256: 29e11097c3a49d299f643e0deb5cc145330b0ee26f9b25c26774814a9f8035a3
+        libcurand-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcurand-dev-13-4_10.4.4.46-1_arm64.deb
+          sha256: 63feacd3db22a2fdbdc8e6ad8fac704139da4163d3b1fcd1824b30721a0d0398
+        libcusolver-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusolver-13-4_12.3.1.12-1_arm64.deb
+          sha256: 0fdb6d2fb113669388987a2d3257254d6436720ccf4fecef373f56579d5e6738
+        libcusolver-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusolver-dev-13-4_12.3.1.12-1_arm64.deb
+          sha256: 87cc07cf5db98621c593d4f6157386a1f6e7559ce9161c8fd2153fb572fc9761
+        libcusparse-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusparse-13-4_12.8.6.46-1_arm64.deb
+          sha256: 896d9427aaeec5ce456611b503f4993ce38b16659c539b4b7c2d02d25de2a7f0
+        libcusparse-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcusparse-dev-13-4_12.8.6.46-1_arm64.deb
+          sha256: e6602a62ff6bd1ab387a87a8fc0dfc5db7f445ab943699f5ae42e26326c51558
+        libnpp-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnpp-13-4_13.2.0.32-1_arm64.deb
+          sha256: a611b19f5c4b8194e74ea16cdcd934c1f8b957f23139580e12f896fcce5795c5
+        libnpp-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnpp-dev-13-4_13.2.0.32-1_arm64.deb
+          sha256: d61957412dd2cfb3b4f71df4fdb936d630a11116a91091714e2d042ee592208b
+        libnvfatbin-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvfatbin-13-4_13.4.46-1_arm64.deb
+          sha256: 886a17cba205b0eef5bff8172000c477166de7ebe6214dc515372f12d31ee100
+        libnvfatbin-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvfatbin-dev-13-4_13.4.46-1_arm64.deb
+          sha256: bfad9fcbba20ff007e81d59afaead12365055dd31e274767aedc9793c61e89bd
+        libnvjitlink-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvjitlink-13-4_13.4.46-1_arm64.deb
+          sha256: e06a7f12ac213ef571752e2efb62b8009b1b36b241d97db1d182f85e5445ee26
+        libnvjitlink-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvjitlink-dev-13-4_13.4.46-1_arm64.deb
+          sha256: 09bd794c0538232a3564231df27453a5440bbbd96f6e1a380bbc7ed77d508a0c
+        libnvjpeg-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvjpeg-13-4_13.2.2.32-1_arm64.deb
+          sha256: 42b81d7cea29536f3153e49b3acc7adbe81c0292bd48ba590d4c15666a87cb2b
+        libnvjpeg-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvjpeg-dev-13-4_13.2.2.32-1_arm64.deb
+          sha256: 6744e6b42327eb88b80759c72e92ed1564338f35dac998598752c0cd52e127e7
+        libnvptxcompiler-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvptxcompiler-13-4_13.4.46-1_arm64.deb
+          sha256: cb658842979c51e3c45737d3223520a469bdc71d455d57a9f3007f8264a2917a
+        libnvvm-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libnvvm-13-4_13.4.46-1_arm64.deb
+          sha256: 94bf7518891815f6178a4ea65b11a1640d9ad196f2178ce3b3b9a6d8de37b6f8
+        libcudla-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcudla-13-4_13.4.46-1_arm64.deb
+          sha256: 7721f88e2011e72deb8cd6edd7a4312f4f721580bd6e87b61553f10445d6beae
+        libcudla-dev-13-4:
+          url: https://packages.nvidia.com/jammy/pool/arm64/5B515474-7E78-11F1-8656-C51E4F4B317F/libcudla-dev-13-4_13.4.46-1_arm64.deb
+          sha256: 713af08eb6657b5607134256ad179be0795ddda32a993de544fcf345d1d330b1
